@@ -3,7 +3,95 @@ body {
   font-family: "Montserrat";
 }
 
+h1, h3 {
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: bold;
+  font-size: 5rem;  
+}
+
 .colored-section {
   background-color: #2E4C6D;
   color: #fff;
+}
+
+.navbar {
+  padding: auto;
+}
+
+.navbar-brand {
+  font-family: 'Ubuntu';
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+.container {
+  height: 1500px; 
+  display: flex;
+  justify-content: center;
+}
+
+#movie-list {  
+  overflow-y: auto;
+  margin: 2rem;
+  padding-left: 2rem;
+  max-width: calc(100vw - 2rem);
+}
+
+#movie-list img {
+  flex: 1 0 auto;
+  height: 150px;
+  width: 8rem;
+  margin-top: 0.3rem;
+  cursor: pointer;
+}
+
+#search-form {
+  display: flex;
+  padding: 150px;
+  justify-content: flex-end;
+
+}
+
+.movieSearch {
+  color: #fff;
+}
+
+#movie-detail {
+  position: relative;
+  text-align: center;
+}
+
+.poster {
+  height:50rem;
+  margin-top: 40px;
+}
+
+.genre, .year {
+  position: absolute;
+  left: 390px;
+  /* width: fit-content;   */
+  padding: 0.25rem 5rem 0.25rem 1rem;
+  background-color: bisque;
+}
+
+.genre {
+  bottom: 60px;
+}
+
+.year {
+  bottom: 10px;
 }

@@ -44,8 +44,38 @@
         </nav>
       </div>
     </section>
+    
     <section>
+      <div class="container">
+        <div class="col-2" id="movie-list">
+          <!-- inserting movies here -->
+        </div>
 
+        <div class="col-12">
+          <h1>POPULAR MOVIES</h1>
+          <div id="movie-detail">
+            <img class="poster" src="./src/Mohicansposter.jpg" alt="Movie poster appear soon...">
+            <h3 class="genre" style="color:black">Historical Fiction and Adventure</h2>
+            <h4 class="year">Year: 1992</h3>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <form class="row g-3" id="search-form">
+            <div class="col-auto">
+              <label for="movieSearch" class="visually-hidden">Movie</label>
+              <h2 style="color: #fff;">Find Your Movie</h2>
+            </div>
+            <div class="col-auto">
+              <label for="movie title" class="visually-hidden">Movie Title</label>
+              <input type="text" class="form-control" id="movie_title" placeholder="Movie title...">
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-light mb-3">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </section>
 
   </main>
