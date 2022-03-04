@@ -1,22 +1,18 @@
 body {
   background-color: #396EB0;
-  font-family: "Montserrat";
-}
-
-h1, h3 {
   color: #fff;
+  font-family: "Montserrat";
 }
 
 h1 {
   text-align: center;
   font-family: 'Merriweather', sans-serif;
   font-weight: bold;
-  font-size: 5rem;  
+  font-size: 4rem;  
 }
 
 .colored-section {
   background-color: #2E4C6D;
-  color: #fff;
 }
 
 .navbar {
@@ -39,13 +35,14 @@ h1 {
 }
 
 .container {
-  height: 1500px; 
+  height: 1800px; 
   display: flex;
   justify-content: center;
 }
 
 #movie-list {  
   overflow-y: auto;
+  text-align: center;
   margin: 2rem;
   padding-left: 2rem;
   max-width: calc(100vw - 2rem);
@@ -53,21 +50,14 @@ h1 {
 
 #movie-list img {
   flex: 1 0 auto;
-  height: 150px;
-  width: 8rem;
+  height: 240px;
+  width: 12rem;
   margin-top: 0.3rem;
   cursor: pointer;
 }
 
-#search-form {
-  display: flex;
-  padding: 150px;
-  justify-content: flex-end;
-
-}
-
-.movieSearch {
-  color: #fff;
+#pop-movie {
+  padding-top: 2rem;
 }
 
 #movie-detail {
@@ -83,9 +73,9 @@ h1 {
 .genre, .year {
   position: absolute;
   left: 390px;
-  /* width: fit-content;   */
   padding: 0.25rem 5rem 0.25rem 1rem;
   background-color: bisque;
+  color: #000;
 }
 
 .genre {
@@ -94,4 +84,20 @@ h1 {
 
 .year {
   bottom: 10px;
+}
+
+#search-form {
+  display: flex;
+  padding: 150px;
+  justify-content: flex-start;
+
+}
+
+.commentsAndRating, .buttons {
+  margin-top: 2rem;
+  padding-left: 25rem;
+}
+
+#deleteBtn, #saveBtn {
+  margin-left: 1.5rem;
 }

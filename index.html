@@ -47,31 +47,47 @@
     
     <section>
       <div class="container">
-        <div class="col-2" id="movie-list">
+        
+        <div class="col-3" id="movie-list">
+          <h3>My Favorites</h3>
           <!-- inserting movies here -->
         </div>
 
-        <div class="col-12">
+        <div class="col-12" id="pop-movie">
           <h1>POPULAR MOVIES</h1>
           <div id="movie-detail">
             <img class="poster" src="./src/Mohicansposter.jpg" alt="Movie poster appear soon...">
-            <h3 class="genre" style="color:black">Historical Fiction and Adventure</h2>
-            <h4 class="year">Year: 1992</h3>
+            <h3 class="genre">Historical Fiction and Adventure</h2>
+            <h4 class="year">Year: 1992</h3> 
+          </div>
+          <div class="commentsAndRating"> 
+            <h3>Rating: </h3>
+            <p>
+              <span id="movie-rating">7.7 </span> / 10
+            </p>
+            <h3>Comment: </h3>
+            <p class="movie-comment">
+              Exciting and magnificent movie with overwhelming scenes and impressive scenarios.
+            </p>
+          </div>
+          <div class="buttons">
+            <button type="submit" class="btn btn-outline-light col-3 btn-lg" id="deleteBtn">Delete</button>
+            <button type="submit" class="btn btn-outline-light col-3 btn-lg" id="saveBtn">Save to Favorites</button>
           </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-6">
           <form class="row g-3" id="search-form">
             <div class="col-auto">
-              <label for="movieSearch" class="visually-hidden">Movie</label>
-              <h2 style="color: #fff;">Find Your Movie</h2>
+              <label for="movieSearch" class="visually-hidden"></label>
+              <h2 style="color: #fff;">Search for Movies</h2>
             </div>
             <div class="col-auto">
               <label for="movie title" class="visually-hidden">Movie Title</label>
               <input type="text" class="form-control" id="movie_title" placeholder="Movie title...">
             </div>
             <div class="col-auto">
-              <button type="submit" class="btn btn-light mb-3">Search</button>
+              <button type="submit" class="btn btn-outline-light mb-3">Search</button>
             </div>
           </form>
         </div>
