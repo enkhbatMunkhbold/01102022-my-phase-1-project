@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   renderFavoriteMovieList()
-  deleteMovie()
   saveMovie()
 })
 
@@ -18,12 +17,12 @@ const rating = commentsAndRating.querySelector('#movie-rating')
 const comment = commentsAndRating.querySelector('.movie-comment')
 
 function getEveryMovie(m) {
+
   const img = makeEl('img')
   img.src = m.img_link
   img.className = 'poster'
+  
   document.querySelector('div#movie-list').appendChild(img)
-
-
 
   img.addEventListener('click', (e) => {
     movieDetail[0].src = e.target.src
@@ -32,19 +31,18 @@ function getEveryMovie(m) {
     movieDetail[3].innerText = `Year: ${m.year}`
     rating.textContent = m.rating
     comment.textContent = m.comment
+    deleteMovie(img)
   })
 }
 
-function deleteMovie() {
+function deleteMovie(img) {
   const deleteBtn = document.querySelector('button#deleteBtn')
   deleteBtn.addEventListener('click', () => {
-    debugger
+    img.remove()
     const currentMovie = document.querySelector('h3.title').innerText
-    const selectedMovieInList = document.querySelector('img.poster')
-
     for (let i = 0; i < list.length - 1; i++) {
       if (list[i].name === currentMovie) {
-        selectedMovieInList.remove()
+        // selectedMovieInList.remove()
         movieDetail[0].src = list[i + 1].img_link
         movieDetail[1].innerText = list[i + 1].name
         movieDetail[2].innerText = list[i + 1].genre
