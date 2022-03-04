@@ -1,14 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   renderFavoriteMovieList()
+  deleteMovie()
+  saveMovie()
 })
 
 let renderFavoriteMovieList = () => {
-  fetch('http://localhost:3000/movies') 
-  .then(res => res.json()) 
-  .then(data => data.forEach(getEveryMovie))
+  fetch('http://localhost:3000/movies')
+    .then(res => res.json())
+    .then(data => list = data)
+    .then(data => data.forEach(getEveryMovie))
 }
 
 const makeEl = el => document.createElement(el)
+const movieDetail = document.querySelector('div#movie-detail').children
+const commentsAndRating = document.querySelector('div.commentsAndRating')
+const rating = commentsAndRating.querySelector('#movie-rating')
+const comment = commentsAndRating.querySelector('.movie-comment')
 
 function getEveryMovie(m) {
   const img = makeEl('img')
@@ -16,14 +23,84 @@ function getEveryMovie(m) {
   img.className = 'poster'
   document.querySelector('div#movie-list').appendChild(img)
 
-  const movie = document.querySelector('div#movie-detail').children
-  const commentsAndRating = document.querySelector('div.commentsAndRating')
 
-  img.addEventListener('click', (e) => { 
-    movie[0].src = e.target.src
-    movie[1].innerText = m.genre
-    movie[2].innerText = m.year
-    commentsAndRating.querySelector('#movie-rating').textContent = m.rating
-    commentsAndRating.querySelector('.movie-comment').textContent = m.comment
+
+  img.addEventListener('click', (e) => {
+    movieDetail[0].src = e.target.src
+    movieDetail[1].innerText = m.name
+    movieDetail[2].innerText = m.genre
+    movieDetail[3].innerText = `Year: ${m.year}`
+    rating.textContent = m.rating
+    comment.textContent = m.comment
   })
+}
+
+function deleteMovie() {
+  const deleteBtn = document.querySelector('button#deleteBtn')
+  deleteBtn.addEventListener('click', () => {
+    debugger
+    const currentMovie = document.querySelector('h3.title').innerText
+    const selectedMovieInList = document.querySelector('img.poster')
+
+    for (let i = 0; i < list.length - 1; i++) {
+      if (list[i].name === currentMovie) {
+        selectedMovieInList.remove()
+        movieDetail[0].src = list[i + 1].img_link
+        movieDetail[1].innerText = list[i + 1].name
+        movieDetail[2].innerText = list[i + 1].genre
+        movieDetail[3].innerText = `Year: ${list[i+1].year}`
+        rating.textContent = list[i + 1].rating
+        comment.textContent = list[i + 1].comment
+
+        removeMovieFromDB(list[i])
+      }
+    }  
+  })
+}
+
+function saveMovie() {
+  const saveBtn = document.querySelector('button#saveBtn')
+  saveBtn.addEventListener('click', () => {
+    console.log('list:', list);
+    const currentMovie = movieDetail[1].innerText
+    let found = list.find(obj => obj.name === currentMovie ? true : false)
+    if (!found) {
+
+      const img = makeEl('img')
+      img.src = movieDetail[0].src
+      img.className = 'poster'
+      document.querySelector('div#movie-list').appendChild(img)
+
+      const obj = {
+        "name": currentMovie,
+        "img_link": movieDetail[0].src,
+        "genre": movieDetail[2].innerText,
+        "year": Number(movieDetail[3].innerText),
+        "rating": Number(rating.textContent),
+        "comment": comment.innerText
+      }
+
+      fetch('http://localhost:3000/movies', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(obj)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+
+  })
+}
+
+function removeMovieFromDB(movie) {
+  fetch(`http://localhost:3000/movies/${movie.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(movie => console.log(movie))
 }
