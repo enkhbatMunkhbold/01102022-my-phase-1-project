@@ -52,16 +52,13 @@ function deleteMovie(img) {
     }
 
     for (let i = 0; i < list.length; i++) {
-      // debugger
+      debugger
       if (list[i].name === currentMovie && list.length > 1) {
         console.log('List[i]:', list[i+1]);
         setMovieInfoToDom(list[i + 1])
         removeMovieFromDB(list[i])
         img.remove()
-      } else {
-        setMovieInfoToDom(defaultInfo)        
-        img.remove()
-      }
+      } 
     }
     
   })
@@ -130,6 +127,10 @@ function searchMovies() {
         const rate = movie.Ratings[0].Value.split('/')
         rating.textContent = rate[0]
         comment.textContent = movie.Plot
+      })
+      .catch(err => {
+        console.log('err:', err)
+        setMovieInfoToDom(defaultInfo)
       })
   })
 }

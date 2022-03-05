@@ -28,24 +28,6 @@
       "comment": "Epic civil war movie!"
     },
     {
-      "id": 4,
-      "name": "The Good, the Bad and the Ugly",
-      "img_link": "https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Good_the_bad_and_the_ugly_poster.jpg/220px-Good_the_bad_and_the_ugly_poster.jpg",
-      "genre": "Adventure, Western",
-      "year": 1966,
-      "rating": 8.8,
-      "comment": "Epic spaghetti western with the best set-piece climax ever"
-    },
-    {
-      "id": 5,
-      "name": "The Mask",
-      "img_link": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Mask_%28film%29_poster.jpg/220px-The_Mask_%28film%29_poster.jpg",
-      "genre": "Action, Comedy, Crime, Fantasy",
-      "year": 1994,
-      "rating": 6.9,
-      "comment": "Better personality with the mask Jim carrey"
-    },
-    {
       "id": 6,
       "name": "Rocky",
       "img_link": "https://static.wikia.nocookie.net/moviedatabase/images/0/0c/Rocky_%281976%29.jpg/revision/latest?cb=20141013161029",
@@ -64,22 +46,13 @@
       "comment": "Best sci-fi movie ever ❤️"
     },
     {
-      "name": "Mission: Impossible",
-      "img_link": "https://m.media-amazon.com/images/M/MV5BMTc3NjI2MjU0Nl5BMl5BanBnXkFtZTgwNDk3ODYxMTE@._V1_SX300.jpg",
-      "genre": "Action, Adventure, Thriller",
-      "year": null,
-      "rating": 7.1,
-      "comment": "An American agent, under false suspicion of disloyalty, must discover and expose the real spy without the help of his organization.",
+      "name": "Lauf um Dein Leben - Vom Junkie zum Ironman",
+      "img_link": "https://m.media-amazon.com/images/M/MV5BMDJhZjA5MWEtOTE5Yy00MWJiLTgwNjQtMDliOWI0NWJmZDZkXkEyXkFqcGdeQXVyMjY1ODY2Ng@@._V1_SX300.jpg",
+      "genre": "Biography, Drama, Sport",
+      "year": "Year: 2008",
+      "rating": 5.9,
+      "comment": "He lived the junkie's life as a heroin addict. Triathlon transformed him. Biopic of the record breaking Ironman Andreas Niedrig.",
       "id": 8
-    },
-    {
-      "name": "Batman",
-      "img_link": "https://m.media-amazon.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg",
-      "genre": "Action, Adventure",
-      "year": null,
-      "rating": 7.5,
-      "comment": "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker.",
-      "id": 9
     }
   ]
 }
