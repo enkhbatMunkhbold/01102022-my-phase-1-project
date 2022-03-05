@@ -7,7 +7,7 @@
       "genre": "Historical Fiction and Adventure",
       "year": 1992,
       "rating": 7.7,
-      "comment": "Exciting and magnificent movie with overwhelming scenes and impressive scenarios."      
+      "comment": "Exciting and magnificent movie with overwhelming scenes and impressive scenarios."
     },
     {
       "id": 2,
@@ -21,9 +21,9 @@
     {
       "id": 3,
       "name": "Gone with the Wind",
-      "img_link": "https://cdn.shopify.com/s/files/1/1057/4964/products/gone-with-the-wind-vintage-movie-poster-original-italian-2-foglio-39x55.jpg?v=1542949348", 
+      "img_link": "https://cdn.shopify.com/s/files/1/1057/4964/products/gone-with-the-wind-vintage-movie-poster-original-italian-2-foglio-39x55.jpg?v=1542949348",
       "genre": "Drama, History, Romance, War",
-      "year": 1939,     
+      "year": 1939,
       "rating": 8.2,
       "comment": "Epic civil war movie!"
     },
@@ -61,7 +61,16 @@
       "genre": "Action, Adventure, Sci-Fi",
       "year": 1984,
       "rating": 8.1,
-      "comment": "Best sci-fi movie ever ❤️"      
-    }    
+      "comment": "Best sci-fi movie ever ❤️"
+    },
+    {
+      "name": "Mission: Impossible",
+      "img_link": "https://m.media-amazon.com/images/M/MV5BMTc3NjI2MjU0Nl5BMl5BanBnXkFtZTgwNDk3ODYxMTE@._V1_SX300.jpg",
+      "genre": "Action, Adventure, Thriller",
+      "year": null,
+      "rating": 7.1,
+      "comment": "An American agent, under false suspicion of disloyalty, must discover and expose the real spy without the help of his organization.",
+      "id": 8
+    }
   ]
 }

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   renderFavoriteMovieList()
   saveMovie()
+  searchMovies()
 })
 
 let renderFavoriteMovieList = () => {
@@ -15,13 +16,14 @@ const movieDetail = document.querySelector('div#movie-detail').children
 const commentsAndRating = document.querySelector('div.commentsAndRating')
 const rating = commentsAndRating.querySelector('#movie-rating')
 const comment = commentsAndRating.querySelector('.movie-comment')
+let foundMovie = {}
 
 function getEveryMovie(m) {
 
   const img = makeEl('img')
   img.src = m.img_link
   img.className = 'poster'
-  
+
   document.querySelector('div#movie-list').appendChild(img)
 
   img.addEventListener('click', (e) => {
@@ -52,7 +54,7 @@ function deleteMovie(img) {
 
         removeMovieFromDB(list[i])
       }
-    }  
+    }
   })
 }
 
@@ -88,7 +90,6 @@ function saveMovie() {
         .then(res => res.json())
         .then(data => console.log(data))
     }
-
   })
 }
 
@@ -101,4 +102,33 @@ function removeMovieFromDB(movie) {
     })
     .then(res => res.json())
     .then(movie => console.log(movie))
+}
+
+function searchMovies() {
+  const search = document.querySelector('#search-form')
+  search.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const movieName = e.target[0].value
+
+
+    fetch(`http://www.omdbapi.com/?t=${movieName}&apikey=19546fcd`)
+    .then(res => res.json())
+    .then(data => {
+      console.log('Data:', data);
+      movieDetail[0].src = data.Poster
+      movieDetail[1].innerText = data.Title
+      movieDetail[2].innerText = data.Genre
+      movieDetail[3].innerText = `Year: ${data.Year}`
+      const rate = data.Ratings[0].Value.split('/')
+      rating.textContent = rate[0]
+      comment.textContent = data.Plot
+    })    
+  })
+
+ 
+  
+}
+
+function getMovieFromBackend(name) {
+  
 }
