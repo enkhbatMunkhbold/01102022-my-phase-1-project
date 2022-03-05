@@ -71,6 +71,15 @@
       "rating": 7.1,
       "comment": "An American agent, under false suspicion of disloyalty, must discover and expose the real spy without the help of his organization.",
       "id": 8
+    },
+    {
+      "name": "Batman",
+      "img_link": "https://m.media-amazon.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg",
+      "genre": "Action, Adventure",
+      "year": null,
+      "rating": 7.5,
+      "comment": "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker.",
+      "id": 9
     }
   ]
 }

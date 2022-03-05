@@ -12,11 +12,20 @@ let renderFavoriteMovieList = () => {
 }
 
 const makeEl = el => document.createElement(el)
+const movieList = document.querySelector('#movie-list')
 const movieDetail = document.querySelector('div#movie-detail').children
 const commentsAndRating = document.querySelector('div.commentsAndRating')
 const rating = commentsAndRating.querySelector('#movie-rating')
 const comment = commentsAndRating.querySelector('.movie-comment')
-let foundMovie = {}
+
+const defaultInfo = {
+  "name": "Movie title goes here...",
+  "img_link": "./src/image-placeholder.jpg",
+  "genre": "Movie genre goes here...",
+  "year": "Year: ...",
+  "rating": 0.0,
+  "comment": "Comments about the movie..."
+}
 
 function getEveryMovie(m) {
 
@@ -24,15 +33,11 @@ function getEveryMovie(m) {
   img.src = m.img_link
   img.className = 'poster'
 
-  document.querySelector('div#movie-list').appendChild(img)
+  movieList.appendChild(img)
 
-  img.addEventListener('click', (e) => {
-    movieDetail[0].src = e.target.src
-    movieDetail[1].innerText = m.name
-    movieDetail[2].innerText = m.genre
-    movieDetail[3].innerText = `Year: ${m.year}`
-    rating.textContent = m.rating
-    comment.textContent = m.comment
+  img.addEventListener('click', () => {
+    console.log('Mmmm:', m);
+    setMovieInfoToDom(m)
     deleteMovie(img)
   })
 }
@@ -40,28 +45,31 @@ function getEveryMovie(m) {
 function deleteMovie(img) {
   const deleteBtn = document.querySelector('button#deleteBtn')
   deleteBtn.addEventListener('click', () => {
-    img.remove()
-    const currentMovie = document.querySelector('h3.title').innerText
-    for (let i = 0; i < list.length - 1; i++) {
-      if (list[i].name === currentMovie) {
-        // selectedMovieInList.remove()
-        movieDetail[0].src = list[i + 1].img_link
-        movieDetail[1].innerText = list[i + 1].name
-        movieDetail[2].innerText = list[i + 1].genre
-        movieDetail[3].innerText = `Year: ${list[i+1].year}`
-        rating.textContent = list[i + 1].rating
-        comment.textContent = list[i + 1].comment
 
+    const currentMovie = document.querySelector('h3.title').innerText
+    if (list.length === 1) {
+      setMovieInfoToDom(defaultInfo)
+    }
+
+    for (let i = 0; i < list.length; i++) {
+      // debugger
+      if (list[i].name === currentMovie && list.length > 1) {
+        console.log('List[i]:', list[i+1]);
+        setMovieInfoToDom(list[i + 1])
         removeMovieFromDB(list[i])
+        img.remove()
+      } else {
+        setMovieInfoToDom(defaultInfo)        
+        img.remove()
       }
     }
+    
   })
 }
 
 function saveMovie() {
   const saveBtn = document.querySelector('button#saveBtn')
   saveBtn.addEventListener('click', () => {
-    console.log('list:', list);
     const currentMovie = movieDetail[1].innerText
     let found = list.find(obj => obj.name === currentMovie ? true : false)
     if (!found) {
@@ -69,13 +77,13 @@ function saveMovie() {
       const img = makeEl('img')
       img.src = movieDetail[0].src
       img.className = 'poster'
-      document.querySelector('div#movie-list').appendChild(img)
+      document.querySelector('#movie-list').appendChild(img)
 
       const obj = {
         "name": currentMovie,
         "img_link": movieDetail[0].src,
         "genre": movieDetail[2].innerText,
-        "year": Number(movieDetail[3].innerText),
+        "year": movieDetail[3].innerText,
         "rating": Number(rating.textContent),
         "comment": comment.innerText
       }
@@ -106,29 +114,31 @@ function removeMovieFromDB(movie) {
 
 function searchMovies() {
   const search = document.querySelector('#search-form')
+
   search.addEventListener('submit', (e) => {
     e.preventDefault()
     const movieName = e.target[0].value
 
-
     fetch(`http://www.omdbapi.com/?t=${movieName}&apikey=19546fcd`)
-    .then(res => res.json())
-    .then(data => {
-      console.log('Data:', data);
-      movieDetail[0].src = data.Poster
-      movieDetail[1].innerText = data.Title
-      movieDetail[2].innerText = data.Genre
-      movieDetail[3].innerText = `Year: ${data.Year}`
-      const rate = data.Ratings[0].Value.split('/')
-      rating.textContent = rate[0]
-      comment.textContent = data.Plot
-    })    
+      .then(res => res.json())
+      .then(movie => {
+        console.log('AAAA:', movie);
+        movieDetail[0].src = movie.Poster
+        movieDetail[1].innerText = movie.Title
+        movieDetail[2].innerText = movie.Genre
+        movieDetail[3].innerText = `Year: ${movie.Year}`
+        const rate = movie.Ratings[0].Value.split('/')
+        rating.textContent = rate[0]
+        comment.textContent = movie.Plot
+      })
   })
-
- 
-  
 }
 
-function getMovieFromBackend(name) {
-  
+function setMovieInfoToDom(data) {
+  movieDetail[0].src = data.img_link
+  movieDetail[1].innerText = data.name
+  movieDetail[2].innerText = data.genre
+  movieDetail[3].innerText = `Year: ${data.year}`
+  rating.textContent = data.rating
+  comment.textContent = data.comment
 }
